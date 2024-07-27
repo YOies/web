@@ -1,4 +1,5 @@
 --ysse
+repeat wait() until game:IsLoaded()
 function SendMessage(url, message)
     local http = game:GetService("HttpService")
     local headers = {
