@@ -51,7 +51,7 @@ end
  local ammount = {}
  for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.HUD.Lost.Jaeza.ScrollingFrame:GetChildren()) do 
     if v:IsA("ImageLabel") and v:FindFirstChild("Value") then
-    table.insert(items,v.Value.Text)
+    table.insert(ammount,v.Value.Text)
  end
 end 
 
