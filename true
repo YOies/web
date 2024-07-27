@@ -1,0 +1,88 @@
+function SendMessage(url, message)
+    local http = game:GetService("HttpService")
+    local headers = {
+        ["Content-Type"] = "application/json"
+    }
+    local data = {
+        ["content"] = message
+    }
+    local body = http:JSONEncode(data)
+    local response = request({
+        Url = url,
+        Method = "POST",
+        Headers = headers,
+        Body = body
+    })
+end
+function SendMessageEMBED(url, embed)
+    local http = game:GetService("HttpService")
+    local headers = {
+        ["Content-Type"] = "application/json"
+    }
+    local data = {
+        ["embeds"] = {
+            {
+                ["title"] = embed.title,
+                ["description"] = embed.description,
+                ["color"] = embed.color,
+                ["fields"] = embed.fields,
+                ["footer"] = {
+                    ["text"] = embed.footer.text
+                }
+            }
+        }
+    }
+    local body = http:JSONEncode(data)
+    local response = request({
+        Url = url,
+        Method = "POST",
+        Headers = headers,
+        Body = body
+    })
+end
+
+local items = {}
+  for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.HUD.Lost.Jaeza.ScrollingFrame:GetChildren()) do 
+     if v:IsA("ImageLabel") then
+     table.insert(items,v.Name)
+  end
+end 
+
+ local ammount = {}
+ for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.HUD.Lost.Jaeza.ScrollingFrame:GetChildren()) do 
+    if v:IsA("ImageLabel") and v:FindFirstChild("Value") then
+    table.insert(items,v.Value.Text)
+ end
+end 
+
+  getgenv().b = true 
+while task.wait(.1) do
+     if b == true then 
+        if game:GetService("Players").LocalPlayer.PlayerGui.HUD.Victory.Visible == true or game:GetService("Players").LocalPlayer.PlayerGui.HUD.Lost.Visible == true then 
+local url = "https://discord.com/api/webhooks/1232603329608286292/IhHFPu6HgcYuEVHxUSFiTw0hf82HATz5YzSJJFiAtq8wtRGnXg0fI4ZeRINkGlSsaz-Z"
+local embed = {
+    ["title"] = "Anime Protectors Defense | Rewards Webhook",
+    ["description"] = "script made by DatNguyen",
+    ["color"] = 65280,
+    ["fields"] = {
+        {
+            ["name"] = "Item Dropped:",
+            ["value"] = table.concat(items,"\n")
+        },
+        {
+            ["name"] = "Ammount Dropped:",
+            ["value"] = table.concat(ammount,"\n")
+        }
+    },
+    ["footer"] = {
+        ["text"] = "DatNguyen on top."
+    }
+}
+SendMessageEMBED(url, embed)
+getgenv().b = false
+end 
+else
+     wait()
+     break
+end 
+end
