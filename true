@@ -1,3 +1,4 @@
+--ysse
 function SendMessage(url, message)
     local http = game:GetService("HttpService")
     local headers = {
@@ -41,24 +42,26 @@ function SendMessageEMBED(url, embed)
     })
 end
 
-local items = {}
-  for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.HUD.Lost.Jaeza.ScrollingFrame:GetChildren()) do 
-     if v:IsA("ImageLabel") then
-     table.insert(items,v.Name)
-  end
-end 
-
- local ammount = {}
- for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.HUD.Lost.Jaeza.ScrollingFrame:GetChildren()) do 
-    if v:IsA("ImageLabel") and v:FindFirstChild("Value") then
-    table.insert(ammount,v.Value.Text)
- end
-end 
-
   getgenv().b = true 
 while task.wait(.1) do
      if b == true then 
         if game:GetService("Players").LocalPlayer.PlayerGui.HUD.Victory.Visible == true or game:GetService("Players").LocalPlayer.PlayerGui.HUD.Lost.Visible == true then 
+
+            
+local items = {}
+for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.HUD.Lost.Jaeza.ScrollingFrame:GetChildren()) do 
+   if v:IsA("ImageLabel") then
+   table.insert(items,v.Name)
+end
+end 
+
+local ammount = {}
+for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.HUD.Lost.Jaeza.ScrollingFrame:GetChildren()) do 
+  if v:IsA("ImageLabel") and v:FindFirstChild("Value") then
+  table.insert(ammount,v.Value.Text)
+end
+end 
+
 local url = "https://discord.com/api/webhooks/1232603329608286292/IhHFPu6HgcYuEVHxUSFiTw0hf82HATz5YzSJJFiAtq8wtRGnXg0fI4ZeRINkGlSsaz-Z"
 local embed = {
     ["title"] = "Anime Protectors Defense | Rewards Webhook",
@@ -86,3 +89,5 @@ else
      break
 end 
 end
+
+--loadstring(game:HttpGet("https://raw.githubusercontent.com/YOies/web/main/true"))()
