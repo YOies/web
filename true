@@ -1,4 +1,4 @@
---ysse
+--AD
 repeat wait() until game:IsLoaded()
 function SendMessage(url, message)
     local http = game:GetService("HttpService")
@@ -51,14 +51,14 @@ while task.wait(.1) do
             
 local items = {}
 for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.HUD.Lost.Jaeza.ScrollingFrame:GetChildren()) do 
-   if v:IsA("ImageLabel") then
+   if v:IsA("ImageLabel") and v.Name == "The River (Tier 5)" then
    table.insert(items,v.Name)
 end
 end 
 
 local ammount = {}
 for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.HUD.Lost.Jaeza.ScrollingFrame:GetChildren()) do 
-  if v:IsA("ImageLabel") and v:FindFirstChild("Value") then
+  if v:IsA("ImageLabel") and v.Name == "The River (Tier 5)" and v:FindFirstChild("Value") then
   table.insert(ammount,v.Value.Text)
 end
 end 
@@ -90,5 +90,7 @@ else
      break
 end 
 end
+
+--loadstring(game:HttpGet("https://raw.githubusercontent.com/YOies/web/main/true"))()
 
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/YOies/web/main/true"))()
